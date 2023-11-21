@@ -23,8 +23,8 @@ namespace ApiForCompany.Controllers
         [HttpGet]
         public IActionResult GetStaffEmployee()
         {
-            List<EmployeeStaff>? bir=_context.EmployeeStaff.Include(x=>x.Employee)
-                .Include(x=>x.Staff).ToList();
+            var bir=_context.Employee.Include(x=>x.Staffs)
+                .ThenInclude(x => x.Staff).ToList();
             return Ok(bir);
         }
     }
